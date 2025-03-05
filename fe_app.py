@@ -89,6 +89,8 @@ with app.app_context():
 # this is a decorator in Flask, that determines a URL then binds URL with my function. Flask determines what URL triggers my function. Then the func is called.
 # When I click (=visit) this URL (http://127.0.0.1:5000 as this is Flask default IP and URL) will be invoked function: index()
 # in which I do: # I print 'Hello you'
+
+# rout method receives: rule (=URL), option (here we can write: method=[DELETE] or method=[POST])
 @app.route('/')
 def index():
     return 'Hello you !'
@@ -169,33 +171,4 @@ def delete_drink(id):# we define a method we wish to hit when someone visits a r
     db.session.delete(drink)
     db.session.commit()
     print(f"Drink: {drink}, was deleted from the table: {Drink.__tablename__}")
-    return {"message":"YEEEE"}
-
-
-
-# if __name__ == '__main__':
-#
-#     print(f"Application is running within a context of the main ...")
-#     with app.app_context():
-#         db.drop_all() # !!! Delete DB
-#         db.create_all()  # !!! Create empty DB file .db in project path: root/instance
-#         print(f"Table have been created: {Drink.__tablename__}")
-#
-#     # push hard codded few items into DB
-#     print(f"Pushing hard codded few drink items into the table: {Drink.__tablename__}...")
-#     drink = Drink(name="Grape Soda", description="sparkling water with grape taste")
-#     print(drink)
-#     db.session.add(drink)  # logical insert of the new resource (new data)
-#     db.session.commit()  # actual insert
-#
-#     drink = Drink(name="Cola", description="Coka cola")
-#     print(drink)
-#     db.session.add(drink)
-#     db.session.commit()
-#
-#     print(f"\nQuerying db to retrieve  (GET) all drink items back ...")
-#     all_drinks = Drink.query.all()
-#     for drink in all_drinks:
-#         print(drink)
-#
-#     #app.run(debug=True) # This allows running the app directly = via main
+    return {"message":f"Item {id} was deleted"}

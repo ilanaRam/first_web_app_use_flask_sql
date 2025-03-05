@@ -4,6 +4,12 @@ import os.path
 import requests
 import json
 
+"""
+This file contains exp of the API testing for WEB app
+Call the api of the site Stackoverflow
+"""
+
+
 def rest_api_get_retrive_data_by_url_from_github_site():
     # this way we access send REST APIs to the site - for accessing the apis of the site
     # here we use REST API - GET(url) to get resources (all questions that were asked)
